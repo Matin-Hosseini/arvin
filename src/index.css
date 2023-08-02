@@ -1,0 +1,114 @@
+:root {
+  --green-color: #1dc9a0;
+}
+
+@font-face {
+  font-family: "Iran-Kharazmi";
+  src: url("../public/assets/fonts/IRAN-Kharazmi.ttf") format("truetype");
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("../public/assets/fonts/IRANSansX/IRANSansXRegular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "gandom";
+  src: url("../src/Fonts/Gandom-FD.eot"), url("../src/Fonts/Gandom-FD.ttf"),
+    url("../src/Fonts/Gandom-FD.woff");
+}
+
+@font-face {
+  font-family: "ShabnamLight";
+  src: url("../src/Fonts/Shabnam-Light-FD.eot"),
+    url("../src/Fonts/Shabnam-Light-FD.ttf"),
+    url("../src/Fonts/Shabnam-Light-FD.woff");
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Iran-Kharazmi";
+  /* overflow-x: hidden; */
+}
+
+/* default css */
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button{
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+}
+
+.curson-pointer{
+  cursor: pointer;
+}
+
+.custom-btn {
+  background-color: var(--green-color);
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 3.2rem;
+  color: #fff;
+}
+.custom-btn:disabled {
+  background-color: #1dc9a171;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #a42538;
+  font-size: 1.2rem;
+}
+
+.row {
+  margin: 0;
+}
+
+.section-container {
+  background-color: #f24c3d;
+  padding: 2rem;
+  border-radius: 0.8rem;
+}
+
+.HoverItem:hover {
+  background-color: rgb(235, 233, 233);
+}
+
+input {
+  text-align: right !important  ;
+}
+
+.secondary-link-color {
+  color: rgb(13, 110, 253);
+}
+
+
+.secondary-font{
+  font-family: "ShabnamLight";
+}

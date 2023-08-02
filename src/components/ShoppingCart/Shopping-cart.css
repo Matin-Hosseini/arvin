@@ -1,0 +1,39 @@
+.cart-calculations{
+    width: 30rem;
+}
+.cart-calculations li {
+    margin-bottom: 1rem;
+}
+
+.coupon-form{
+    border-radius: .5rem;
+    overflow: hidden;
+    
+}
+
+.coupon-form input,
+.coupon-form button{
+    border: 0;
+    outline: 0;
+}
+
+.coupon-form input{
+    height: 100%;
+    padding: 0 .5rem;
+}
+
+.coupon-form button{
+    background-color: #33A0FF;
+    color: #fff;
+    padding: .7rem 1.5rem;
+}
+
+.check-out-btn{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    background-color: #33A0FF;
+    padding: 1rem 0;
+    border-radius: .2rem;
+}
