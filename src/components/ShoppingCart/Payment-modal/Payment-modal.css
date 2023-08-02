@@ -1,0 +1,30 @@
+.shopping-cart__payment-modal {
+  color: var(--blue-color);
+}
+
+.shopping-cart__payment-modal .modal-content {
+  padding: 2rem 3rem;
+}
+
+.blue-btn {
+  background-color: #33a0ff;
+  color: #fff;
+  padding: 0.7rem 7rem;
+  border-radius: 0.4rem;
+}
+
+.shopping-cart__payment-modal .payment-mdoal-form input:not([type="checkbox"]),
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+  border: 0;
+  outline: 0;
+  color: #999999;
+}
+
+.success-icon {
+  width: 13rem;
+  height: 13rem;
+}

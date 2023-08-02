@@ -1,5 +1,6 @@
 :root {
   --green-color: #1dc9a0;
+  --blue-color: #33a0ff
 }
 
 @font-face {
@@ -63,6 +64,9 @@ button{
 
 .curson-pointer{
   cursor: pointer;
+}
+.blue-color{
+  color: var(--blue-color);
 }
 
 .custom-btn {

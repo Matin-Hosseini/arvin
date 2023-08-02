@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Modal } from "react-bootstrap";
 import ProductItem from "./Product-item/Product-item";
 import Loader from "../Loader/Loader";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
@@ -7,6 +7,7 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import "./Shopping-cart.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import PaymentModal from "./Payment-modal/Payment-modal";
 
 const shoppingCartProducts = [
   {
@@ -34,9 +35,10 @@ export default function ShoppingCart() {
   const [discountCode, setDiscountCode] = useState("");
   const [discountPercentage, setDiscountPercentage] = useState(0);
 
-  useEffect(() => {
-    
+  //payment modal states
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
+  useEffect(() => {
     let sum = 0;
     let newPostPrice = 0;
     let totalPrice;
@@ -163,11 +165,20 @@ export default function ShoppingCart() {
                   <span className="">{totalPrice.toLocaleString()} تومان</span>
                 </li>
               </ul>
-              <button className="check-out-btn">پرداخت</button>
+              <button
+                className="check-out-btn"
+                onClick={() => setShowPaymentModal(true)}>
+                پرداخت
+              </button>
             </div>
           </div>
         </Container>
       </div>
+
+      <PaymentModal
+        show={showPaymentModal}
+        onHide={() => setShowPaymentModal(false)}
+      />
       <Footer />
     </>
   );
