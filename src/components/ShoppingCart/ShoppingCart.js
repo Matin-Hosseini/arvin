@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProductItem from "./Product-item/Product-item";
+import Loader from "../Loader/Loader";
 
 import "./Shopping-cart.css";
 
@@ -22,27 +23,30 @@ const shoppingCartProducts = [
 ];
 
 export default function ShoppingCart() {
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState(shoppingCartProducts);
   const [postPrice, setPostPrice] = useState(0);
   const [shoppingCartPrice, setShoppingCartPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/shoppingCartProducts`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
+  const [discountCode, setDiscountCode] = useState("");
+  const [discountPercentage, setDiscountPercentage] = useState(0);
 
   useEffect(() => {
     let sum = 0;
+    let newPostPrice = 0;
+    let totalPrice
+
     products.forEach((product) => (sum += product.price * product.count));
     setShoppingCartPrice(sum);
-    if (sum > 500_000) {
-      setPostPrice(20_000);
-    }
-    setTotalPrice(sum + postPrice);
+
+    sum > 500_000 ? (newPostPrice = 20_000) : (newPostPrice = 0);
+    totalPrice = sum + newPostPrice
+    totalPrice = totalPrice - (totalPrice * discountPercentage) / 100;
+    
+
+    setPostPrice(newPostPrice);
+    setTotalPrice(totalPrice);
+    
   }, [products]);
 
   const addCountHandler = (productId) => {
@@ -66,10 +70,24 @@ export default function ShoppingCart() {
     setProducts(newProducts);
   };
 
-  console.log("render");
+  const discountCodeHandler = async (e) => {
+    e.preventDefault();
+    let newTotalPrice;
+    setLoading(true);
+    const getAllCodes = await fetch(`http://localhost:8000/discountCodes`);
+    const allCodes = await getAllCodes.json();
+    const targetCode = allCodes.find((code) => code.code === discountCode);
+    const discountPercent = targetCode.percentage;
+    setDiscountPercentage(discountPercent);
+    newTotalPrice = totalPrice - (totalPrice * discountPercent) / 100;
+    setTotalPrice(newTotalPrice);
+    setDiscountCode("")
+    setLoading(false);
+  };
 
   return (
     <div className="secondary-font">
+      {loading && <Loader />}
       <Container className="px-5">
         <Row>
           <Col md={6}>محصول</Col>
@@ -98,8 +116,16 @@ export default function ShoppingCart() {
         </div>
 
         <div className="d-flex justify-content-between align-items-start">
-          <form action="" className="coupon-form">
-            <input type="text" placeholder="کد تخفیف" />
+          <form
+            action=""
+            className="coupon-form"
+            onSubmit={discountCodeHandler}>
+            <input
+              type="text"
+              placeholder="کد تخفیف"
+              value={discountCode}
+              onChange={(e) => setDiscountCode(e.target.value)}
+            />
             <button>اعمال کد</button>
           </form>
 
@@ -115,7 +141,7 @@ export default function ShoppingCart() {
               </li>
               <li className="d-flex justify-content-between align-items-center fs-4">
                 <span>تخفیف</span>
-                <span>0</span>
+                <span>{discountPercentage}%</span>
               </li>
               <li className="d-flex justify-content-between align-items-center fs-2 fw-bold">
                 <span className="">مجموع کل</span>
