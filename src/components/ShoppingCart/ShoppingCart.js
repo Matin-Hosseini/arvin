@@ -2,8 +2,11 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProductItem from "./Product-item/Product-item";
 import Loader from "../Loader/Loader";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 import "./Shopping-cart.css";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const shoppingCartProducts = [
   {
@@ -32,21 +35,21 @@ export default function ShoppingCart() {
   const [discountPercentage, setDiscountPercentage] = useState(0);
 
   useEffect(() => {
+    
+
     let sum = 0;
     let newPostPrice = 0;
-    let totalPrice
+    let totalPrice;
 
     products.forEach((product) => (sum += product.price * product.count));
     setShoppingCartPrice(sum);
 
     sum > 500_000 ? (newPostPrice = 20_000) : (newPostPrice = 0);
-    totalPrice = sum + newPostPrice
+    totalPrice = sum + newPostPrice;
     totalPrice = totalPrice - (totalPrice * discountPercentage) / 100;
-    
 
     setPostPrice(newPostPrice);
     setTotalPrice(totalPrice);
-    
   }, [products]);
 
   const addCountHandler = (productId) => {
@@ -81,77 +84,91 @@ export default function ShoppingCart() {
     setDiscountPercentage(discountPercent);
     newTotalPrice = totalPrice - (totalPrice * discountPercent) / 100;
     setTotalPrice(newTotalPrice);
-    setDiscountCode("")
+    setDiscountCode("");
     setLoading(false);
   };
 
   return (
-    <div className="secondary-font">
-      {loading && <Loader />}
-      <Container className="px-5">
-        <Row>
-          <Col md={6}>محصول</Col>
-          <Col md={2} className="text-center">
-            قیمت
-          </Col>
-          <Col md={2} className="text-center">
-            تعداد
-          </Col>
-          <Col md={2} className="text-center">
-            قیمت واحد
-          </Col>
-        </Row>
+    <>
+      <Header />
+      <div className="secondary-font my-5">
+        {loading && <Loader />}
+        <Container className="px-5">
+          {!products.length && (
+            <div className="text-center my-5">
+              <MdOutlineRemoveShoppingCart className="cart-cross-icon text-danger" />
+              <p>سبد خرید شما خالی می باشد</p>
+            </div>
+          )}
 
-        <div className="products mb-5">
-          {products.length > 0 &&
-            products.map((product) => (
-              <ProductItem
-                {...product}
-                key={product.id}
-                onAddCount={addCountHandler}
-                onMinusCount={minusCountHandler}
-                onRemove={removeHandler}
+          {products.length !== 0 && (
+            <>
+              <Row>
+                <Col md={6}>محصول</Col>
+                <Col md={2} className="text-left">
+                  قیمت
+                </Col>
+                <Col md={2} className="text-left">
+                  تعداد
+                </Col>
+                <Col md={2} className="text-left">
+                  قیمت واحد
+                </Col>
+              </Row>
+
+              <div className="products mb-5">
+                {products.map((product) => (
+                  <ProductItem
+                    {...product}
+                    key={product.id}
+                    onAddCount={addCountHandler}
+                    onMinusCount={minusCountHandler}
+                    onRemove={removeHandler}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+
+          <div className="d-flex justify-content-between align-items-start">
+            <form
+              action=""
+              className="coupon-form"
+              onSubmit={discountCodeHandler}>
+              <input
+                type="text"
+                placeholder="کد تخفیف"
+                value={discountCode}
+                onChange={(e) => setDiscountCode(e.target.value)}
               />
-            ))}
-        </div>
+              <button>اعمال کد</button>
+            </form>
 
-        <div className="d-flex justify-content-between align-items-start">
-          <form
-            action=""
-            className="coupon-form"
-            onSubmit={discountCodeHandler}>
-            <input
-              type="text"
-              placeholder="کد تخفیف"
-              value={discountCode}
-              onChange={(e) => setDiscountCode(e.target.value)}
-            />
-            <button>اعمال کد</button>
-          </form>
-
-          <div>
-            <ul className="cart-calculations">
-              <li className="d-flex justify-content-between align-items-center fs-4">
-                <span>مجموع سبد</span>
-                <span>{shoppingCartPrice.toLocaleString()} تومان</span>
-              </li>
-              <li className="d-flex justify-content-between align-items-center fs-4">
-                <span>هزینه پست</span>
-                <span>{postPrice.toLocaleString()} تومان</span>
-              </li>
-              <li className="d-flex justify-content-between align-items-center fs-4">
-                <span>تخفیف</span>
-                <span>{discountPercentage}%</span>
-              </li>
-              <li className="d-flex justify-content-between align-items-center fs-2 fw-bold">
-                <span className="">مجموع کل</span>
-                <span className="">{totalPrice.toLocaleString()} تومان</span>
-              </li>
-            </ul>
-            <button className="check-out-btn">پرداخت</button>
+            <div>
+              <ul className="cart-calculations">
+                <li className="d-flex justify-content-between align-items-center fs-4">
+                  <span>مجموع سبد</span>
+                  <span>{shoppingCartPrice.toLocaleString()} تومان</span>
+                </li>
+                <li className="d-flex justify-content-between align-items-center fs-4">
+                  <span>هزینه پست</span>
+                  <span>{postPrice.toLocaleString()} تومان</span>
+                </li>
+                <li className="d-flex justify-content-between align-items-center fs-4">
+                  <span>تخفیف</span>
+                  <span>{discountPercentage}%</span>
+                </li>
+                <li className="d-flex justify-content-between align-items-center fs-2 fw-bold">
+                  <span className="">مجموع کل</span>
+                  <span className="">{totalPrice.toLocaleString()} تومان</span>
+                </li>
+              </ul>
+              <button className="check-out-btn">پرداخت</button>
+            </div>
           </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+      <Footer />
+    </>
   );
 }

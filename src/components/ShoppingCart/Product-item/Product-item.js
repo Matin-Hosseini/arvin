@@ -32,10 +32,10 @@ export default function ProductItem({
             </div>
           </div>
         </Col>
-        <Col md={2} className="text-center">
+        <Col md={2} className="text-left">
           <div className="">{(price * count).toLocaleString()}تومان</div>
         </Col>
-        <Col md={2} className="text-center">
+        <Col md={2} className="text-left">
           <div>
             <button>
               <AiOutlinePlus
@@ -51,7 +51,7 @@ export default function ProductItem({
             </button>
           </div>
         </Col>
-        <Col md={2} className="text-center">
+        <Col md={2} className="text-left">
           <div className="">{price.toLocaleString()}تومان</div>
         </Col>
       </Row>
