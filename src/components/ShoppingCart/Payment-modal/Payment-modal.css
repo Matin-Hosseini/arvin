@@ -28,3 +28,11 @@ textarea {
   width: 13rem;
   height: 13rem;
 }
+
+.payment-method {
+  padding: 1rem;
+  cursor: pointer;
+}
+.payment-method.active {
+  background-color: #ebf0ff;
+}
