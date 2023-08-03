@@ -1,0 +1,12 @@
+.footer__feature {
+  text-align: center;
+}
+.footer__feature .image {
+  width: 5.6rem;
+  height: 5.6rem;
+  margin: auto;
+}
+
+.footer__feature span{
+    font-size: 1.3rem;
+}

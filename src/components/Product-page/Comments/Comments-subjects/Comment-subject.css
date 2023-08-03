@@ -1,0 +1,24 @@
+.range {
+  width: 100%;
+  height: 1rem;
+  border-radius: 10rem;
+  background-color: #cccccc57;
+  position: relative;
+  overflow: hidden;
+}
+
+.range .green {
+  width: 50%;
+  position: absolute;
+  height: 100%;
+  right: 0;
+  background-color: #4caf50;
+}
+
+.range .red {
+  width: 20%;
+  position: absolute;
+  height: 100%;
+  right: 50%;
+  background-color: #d32f2f;
+}

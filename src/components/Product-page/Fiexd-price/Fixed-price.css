@@ -1,0 +1,21 @@
+.fixed-price {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+
+.fixed-price button {
+  flex-basis: 50%;
+}
+
+@media (min-width: 992px) {
+  .fixed-price {
+    display: none;
+  }
+}

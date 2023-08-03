@@ -1,0 +1,17 @@
+.product-sellers{
+  border: 2px solid #ccc;
+  border-left: 0;
+  border-right: 0;
+  margin: 3rem 0;
+  
+}
+.product-sellers__seller-logo {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+@media (max-width: 1040px) {
+  .product-sellers {
+    display: none;
+  }
+}

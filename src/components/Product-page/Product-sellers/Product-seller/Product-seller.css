@@ -1,0 +1,6 @@
+.product-sellers__seller:nth-of-type(2n+2){
+    background-color: #f7f7f8;
+}
+.product-sellers__seller{
+    padding: 1.5rem;
+}

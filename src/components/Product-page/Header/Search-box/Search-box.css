@@ -1,0 +1,29 @@
+.search-box {
+  background-color: #f1f2f4;
+  max-width: 60rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2.17;
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+}
+
+@media (max-width: 1040px) {
+  .search-box {
+    margin: 0 !important;
+    flex-grow: 1;
+  }
+}
+
+.search-box .bi-search {
+  font-size: 2rem;
+  color: #767790;
+}
+
+.search-box input {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  color: #767790;
+  padding: 0 1rem;
+}

@@ -1,0 +1,24 @@
+.page-bread-crumb{
+    display: flex;
+}
+
+.page-bread-crumb li{
+    position: relative;
+    margin-left: 3rem;   
+    color: #767790; 
+    font-size: 1.4rem;
+}
+
+.page-bread-crumb li:not(:last-of-type):after{
+    position: absolute;
+    content: "/";
+    color: #767790;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -1.5rem;
+}
+
+.page-navigator__options li{
+    color: #767790;
+    font-size: 1.6rem;
+}

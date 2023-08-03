@@ -1,0 +1,11 @@
+.footer-trust-images div{
+    width: 10.5rem;
+    height: 10.5rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+}
+
+.footer-trust-images div img{
+    object-fit: contain;
+}

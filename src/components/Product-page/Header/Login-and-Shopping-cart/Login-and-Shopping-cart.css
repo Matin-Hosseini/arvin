@@ -1,0 +1,35 @@
+.user-options .dropdown {
+  position: relative;
+}
+.user-options .dropdown::after {
+  content: "";
+  position: absolute;
+  background-color: #e0e0e6;
+  width: 0.1rem;
+  height: 70%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dropdown-toggle.show {
+  background-color: #fdebed;
+}
+
+.dropdown-menu.show {
+  transform: translate(64px, 41px) !important;
+}
+
+.user-options .bi {
+  font-size: 3rem;
+}
+
+.shopping-cart .bi-cart {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .user-options .bi{
+    font-size: 2rem;
+  }
+}
