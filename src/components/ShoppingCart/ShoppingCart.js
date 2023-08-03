@@ -36,7 +36,7 @@ export default function ShoppingCart() {
   const [discountPercentage, setDiscountPercentage] = useState(0);
 
   //payment modal states
-  const [showPaymentModal, setShowPaymentModal] = useState(true);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   useEffect(() => {
     let sum = 0;
