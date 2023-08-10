@@ -29,6 +29,39 @@ textarea {
   width: 13rem;
   height: 13rem;
 }
+.payment-methods__check-icon {
+  /* background-color: red; */
+  width: 2rem;
+  height: 2rem;
+}
+.payment-methods input[type="checkbox"] {
+  position: relative;
+  visibility: hidden;
+  /* opacity: 0; */
+}
+
+
+.payment-methods input[type="checkbox"]::before {
+  position: absolute;
+  content: "";
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: .2rem;
+  border: 2.3px solid #33a0ff;
+  top: 0;
+  cursor: pointer;
+  visibility: visible;
+  display: grid;
+  place-content: center;
+}
+
+.payment-methods input[type="checkbox"]:checked:before {
+  content: "\f14a";
+  font-family: "Font Awesome 6 Free";
+  font-size: 2.2rem;
+  line-height: .3;
+  color: #33a0ff;
+}
 
 .payment-method {
   padding: 1rem;
@@ -40,7 +73,7 @@ textarea {
 
 /* stepper styles */
 .payment-stepper .MuiStep-root,
-.payment-stepper .MuiStepLabel-iconContainer{
+.payment-stepper .MuiStepLabel-iconContainer {
   padding: 0;
 }
 .payment-stepper .MuiStepper-root {
