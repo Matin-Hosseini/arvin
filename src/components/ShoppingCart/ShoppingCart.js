@@ -92,10 +92,10 @@ export default function ShoppingCart() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="secondary-font my-5">
         {loading && <Loader />}
-        <Container className="px-5">
+        <Container fluid className="px-5">
           {!products.length && (
             <div className="text-center my-5">
               <MdOutlineRemoveShoppingCart className="cart-cross-icon text-danger" />
@@ -105,15 +105,15 @@ export default function ShoppingCart() {
 
           {products.length !== 0 && (
             <>
-              <Row>
-                <Col md={6}>محصول</Col>
-                <Col md={2} className="text-left">
+              <Row className="d-none d-md-flex">
+                <Col xs={6}>محصول</Col>
+                <Col xs={2} className="text-left">
                   قیمت
                 </Col>
-                <Col md={2} className="text-left">
+                <Col xs={2} className="text-left">
                   تعداد
                 </Col>
-                <Col md={2} className="text-left">
+                <Col xs={2} className="text-left">
                   قیمت واحد
                 </Col>
               </Row>
@@ -132,10 +132,10 @@ export default function ShoppingCart() {
             </>
           )}
 
-          <div className="d-flex justify-content-between align-items-start">
+          <div className="d-flex flex-column justify-content-between align-items-center flex-md-row align-items-md-start">
             <form
               action=""
-              className="coupon-form"
+              className="coupon-form mb-5"
               onSubmit={discountCodeHandler}>
               <input
                 type="text"

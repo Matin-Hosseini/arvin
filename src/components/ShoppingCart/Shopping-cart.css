@@ -8,6 +8,7 @@
 .coupon-form {
   border-radius: 0.5rem;
   overflow: hidden;
+  position: relative;
 }
 
 .coupon-form input,
@@ -17,14 +18,18 @@
 }
 
 .coupon-form input {
-  height: 100%;
-  padding: 0 0.5rem;
+  padding: .7rem 0.5rem;
+  width: 26rem;
 }
 
 .coupon-form button {
   background-color: #33a0ff;
   color: #fff;
   padding: 0.7rem 1.5rem;
+  border-radius: 0.5em 0 0 .5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .check-out-btn {
@@ -42,4 +47,10 @@
 }
 .text-left{
     text-align: left;
+}
+
+@media (max-width: 360px){
+  .cart-calculations{
+    width: 26rem;
+  }
 }

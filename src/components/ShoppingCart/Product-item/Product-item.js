@@ -17,25 +17,27 @@ export default function ProductItem({
 }) {
   return (
     <>
-      <Row className="align-items-center">
-        <Col md={6}>
-          <div className="d-flex align-items-center">
+      <Row className="align-items-center single-product">
+        <Col xs={12} md={6} className="d-flex align-items-center">
             <RxCross2
               className="text-danger curson-pointer"
               onClick={() => onRemove(id)}
             />
-            <div className="d-flex align-items-center">
+          
+            <div className="d-flex flex-column flex-md-row align-items-center  flex-grow-1 flex-md-grow-0">
               <div className="product-item__img">
                 <img src={`assets/images/products/${img}`} alt={name} />
               </div>
-              <h2 className="ms-5 fs-3">{name}</h2>
+              <h2 className="single-product__title me-md-3">{name}</h2>
             </div>
-          </div>
+          
         </Col>
-        <Col md={2} className="text-left">
+        <Col xs={4} md={2} className="text-center">
+          <span>قیمت:</span>
           <div className="">{(price * count).toLocaleString()}تومان</div>
         </Col>
-        <Col md={2} className="text-left">
+        <Col  xs={4} md={2} className="text-center">
+          <span>تعداد:</span>
           <div>
             <button>
               <AiOutlinePlus
@@ -51,7 +53,8 @@ export default function ProductItem({
             </button>
           </div>
         </Col>
-        <Col md={2} className="text-left">
+        <Col xs={4} md={2} className="text-center">
+          <span>قمیت واحد:</span>
           <div className="">{price.toLocaleString()}تومان</div>
         </Col>
       </Row>

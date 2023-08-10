@@ -1,4 +1,19 @@
-.product-item__img{
+.product-item__img {
+  width: 16.8rem;
+  height: 12.4rem;
+}
+.single-product {
+  font-size: 1.4rem;
+}
+
+.single-product__title {
+  font-size: 1.8rem;
+  
+}
+
+@media (min-width: 768px) {
+  .product-item__img {
     width: 13.8rem;
     height: 9.4rem;
+  }
 }
